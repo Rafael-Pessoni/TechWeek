@@ -10,6 +10,5 @@ namespace ToDoList.Model
         }
 
         public DbSet<Tarefa> Tarefas { get; set; }
-        public DbSet<Interessado> Interessados { get; set; }
     }
 }

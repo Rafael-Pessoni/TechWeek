@@ -8,9 +8,10 @@ using ToDoList.Model;
 namespace ToDoList.Migrations
 {
     [DbContext(typeof(ToDoListContext))]
-    partial class ToDoListContextModelSnapshot : ModelSnapshot
+    [Migration("20161025144131_SecondMigration")]
+    partial class SecondMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -21,6 +22,8 @@ namespace ToDoList.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("DataCadastro");
+
                     b.Property<DateTime?>("DataTerminoEfetivo");
 
                     b.Property<DateTime>("DataTerminoPlanejado");
@@ -30,12 +33,11 @@ namespace ToDoList.Migrations
                         .HasAnnotation("MaxLength", 200);
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasAnnotation("MaxLength", 100);
+                        .IsRequired();
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasAnnotation("MaxLength", 100);
+                        .HasAnnotation("MaxLength", 200);
 
                     b.HasKey("Id");
 

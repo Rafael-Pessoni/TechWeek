@@ -23,9 +23,17 @@
                 <span asp-validation-for="DataTerminoPlanejado"></span>
             </div>
         </div>
-        <hr/>
-        <div id="div-interessados">
-            @Html.Partial("Interessado")
+        <div class="form-group">
+            <label asp-for="Nome" class="col-md-2 control-label"></label>
+            <div class="col-md-4">
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome"></span>
+            </div>
+            <label asp-for="Email" class="col-md-1 control-label"></label>
+            <div class="col-md-4">
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email"></span>
+            </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

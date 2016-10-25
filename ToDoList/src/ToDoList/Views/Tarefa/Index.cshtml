@@ -8,7 +8,8 @@
     <tr>
         <th>@Html.DisplayNameFor(x => x.Id)</th>
         <th>@Html.DisplayNameFor(x => x.Descricao)</th>
-        <th>@Html.DisplayNameFor(x => x.DataCadastro)</th>
+        <th>@Html.DisplayNameFor(x => x.Nome)</th>
+        <th>@Html.DisplayNameFor(x => x.Email)</th>
         <th>@Html.DisplayNameFor(x => x.DataTerminoPlanejado)</th>
         <th>@Html.DisplayNameFor(x => x.DataTerminoEfetivo)</th>
     </tr>
@@ -19,7 +20,8 @@
             <tr>
                 <td>@Html.DisplayFor(x => item.Id)</td>
                 <td>@Html.DisplayFor(x => item.Descricao)</td>
-                <td>@Html.DisplayFor(x => item.DataCadastro)</td>
+                <td>@Html.DisplayFor(x => item.Nome)</td>
+                <td>@Html.DisplayFor(x => item.Email)</td>
                 <td>@Html.DisplayFor(x => item.DataTerminoPlanejado)</td>
                 <td>
                     @if (item.DataTerminoEfetivo.HasValue)
@@ -30,7 +32,7 @@
                     {
                         <form asp-action="Finish" asp-route-id="@item.Id">
                             <div class="form-actions no-color">
-                                <input type="submit" value="Finalizar" class="btn btn-default" />
+                                <input type="submit" value="Finalizar" class="btn" />
                             </div>
                         </form>
                     }
@@ -38,10 +40,10 @@
                 <td>
                     @if (!item.DataTerminoEfetivo.HasValue)
                     {
-                        <a asp-action="Edit" asp-route-id="@item.Id">Editar</a><span> | </span>
-                        <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a><span> | </span>
+                        <a class="btn" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                        <a class="btn" asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
                     }
-                    <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                    <a class="btn" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
                 </td>  
             </tr>
         }

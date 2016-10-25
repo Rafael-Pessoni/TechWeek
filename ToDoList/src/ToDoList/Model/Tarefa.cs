@@ -9,30 +9,27 @@ namespace ToDoList.Model
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = Messages.Required, AllowEmptyStrings = false)]
-        [MaxLength(200, ErrorMessage = Messages.MaxLength)]
+        [Required(ErrorMessage = "O campo {0} é obrigatório", AllowEmptyStrings = false)]
+        [MaxLength(200, ErrorMessage = "O campo {0} está limitado a {1} caracteres")]
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
 
-        [Required(ErrorMessage = Messages.Required, AllowEmptyStrings = false)]
-        [Display(Name = "Cadastro")]
-        public DateTime DataCadastro { get; set; }
+        [Required(ErrorMessage = "O campo {0} é obrigatório", AllowEmptyStrings = false)]
+        [MaxLength(100, ErrorMessage = "O campo {0} está limitado a {1} caracteres")]
+        [Display(Name = "Nome")]
+        public string Nome { get; set; }
 
-        [Required(ErrorMessage = Messages.Required, AllowEmptyStrings = false)]
+        [MaxLength(100, ErrorMessage = "O campo {0} está limitado a {1} caracteres")]
+        [EmailAddress(ErrorMessage = "O e-mail fornecido não é válido")]
+        [Required(ErrorMessage = "O campo {0} é obrigatório", AllowEmptyStrings = false)]
+        [Display(Name = "E-mail")]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório", AllowEmptyStrings = false)]
         [Display(Name = "Termino Planejado")]
         public DateTime DataTerminoPlanejado { get; set; }
 
         [Display(Name = "Termino Efetivo")]
         public DateTime? DataTerminoEfetivo { get; set; }
-
-        public virtual ICollection<Interessado> Interessados { get; set; }
-
-        public void AddInteressado(Interessado interessado)
-        {
-            if(Interessados == null)
-                Interessados = new List<Interessado>();
-
-            Interessados.Add(interessado);
-        }
     }
 }

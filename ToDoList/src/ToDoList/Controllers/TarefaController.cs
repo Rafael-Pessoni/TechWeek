@@ -25,7 +25,7 @@ namespace ToDoList.Controllers
             if (id == null)
                 return NotFound();
 
-            var tarefa = _context.Tarefas.Include(x => x.Interessados).SingleOrDefault(x => x.Id == id);
+            var tarefa = _context.Tarefas.SingleOrDefault(x => x.Id == id);
 
             if (tarefa == null)
                 return NotFound();
@@ -39,12 +39,8 @@ namespace ToDoList.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Tarefa tarefa, Interessado interessado)
+        public IActionResult Create(Tarefa tarefa)
         {
-            tarefa.DataCadastro = DateTime.Now;
-
-            tarefa.AddInteressado(interessado);
-
             if (!ModelState.IsValid)
                 return View(tarefa);
 
@@ -56,12 +52,12 @@ namespace ToDoList.Controllers
 
         public IActionResult Edit(int? id)
         {
-            if(id == null)
+            if (id == null)
                 return NotFound();
 
-            var tarefa = _context.Tarefas.Include(x => x.Interessados).SingleOrDefault(x => x.Id == id);
+            var tarefa = _context.Tarefas.SingleOrDefault(x => x.Id == id);
 
-            if(tarefa == null)
+            if (tarefa == null)
                 return NotFound();
 
             return View(tarefa);
@@ -73,18 +69,8 @@ namespace ToDoList.Controllers
             if (!ModelState.IsValid)
                 return View(tarefa);
 
-            try
-            {
-                _context.Update(tarefa);
-                _context.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!_context.Tarefas.Any(x => x.Id == tarefa.Id))
-                    return NotFound();
-
-                throw;
-            }
+            _context.Update(tarefa);
+            _context.SaveChanges();
 
             return RedirectToAction("Index");
         }
@@ -121,7 +107,7 @@ namespace ToDoList.Controllers
                 return NotFound();
 
             var tarefa = _context.Tarefas.SingleOrDefault(x => x.Id == id);
-            if(tarefa == null)
+            if (tarefa == null)
                 return NotFound();
 
             tarefa.DataTerminoEfetivo = DateTime.Now;
