@@ -17,6 +17,7 @@ namespace ToDoList.Controllers
 
         public IActionResult Index()
         {
+            // retornando a view incial com a listagem
             return View(_context.Tarefas.ToList());
         }
 
@@ -25,6 +26,7 @@ namespace ToDoList.Controllers
             if (id == null)
                 return NotFound();
 
+            // buscando os detalhes no banco
             var tarefa = _context.Tarefas.SingleOrDefault(x => x.Id == id);
 
             if (tarefa == null)
@@ -41,9 +43,11 @@ namespace ToDoList.Controllers
         [HttpPost]
         public IActionResult Create(Tarefa tarefa)
         {
+            // verificando se o model está válido
             if (!ModelState.IsValid)
                 return View(tarefa);
 
+            // inserindo o registro
             _context.Add(tarefa);
             _context.SaveChanges();
 
@@ -55,6 +59,7 @@ namespace ToDoList.Controllers
             if (id == null)
                 return NotFound();
 
+            // buscando os detalhes no banco
             var tarefa = _context.Tarefas.SingleOrDefault(x => x.Id == id);
 
             if (tarefa == null)
@@ -66,9 +71,11 @@ namespace ToDoList.Controllers
         [HttpPost]
         public IActionResult Edit(Tarefa tarefa)
         {
+            // verificando se o model está válido
             if (!ModelState.IsValid)
                 return View(tarefa);
 
+            //atualizando o registro
             _context.Update(tarefa);
             _context.SaveChanges();
 
@@ -80,6 +87,7 @@ namespace ToDoList.Controllers
             if (id == null)
                 return NotFound();
 
+            // buscando os detalhes no banco
             var tarefa = _context.Tarefas.SingleOrDefault(x => x.Id == id);
 
             if (tarefa == null)
@@ -94,7 +102,10 @@ namespace ToDoList.Controllers
             if (id == null)
                 return NotFound();
 
+            // buscando a tarefa no banco
             var tarefa = _context.Tarefas.SingleOrDefault(x => x.Id == id);
+
+            //removendo o registro
             _context.Tarefas.Remove(tarefa);
             _context.SaveChanges();
 
@@ -106,10 +117,12 @@ namespace ToDoList.Controllers
             if (id == null)
                 return NotFound();
 
+            // buscando a tafefa no banco
             var tarefa = _context.Tarefas.SingleOrDefault(x => x.Id == id);
             if (tarefa == null)
                 return NotFound();
 
+            // atualizando o registro
             tarefa.DataTerminoEfetivo = DateTime.Now;
             _context.Update(tarefa);
             _context.SaveChanges();
