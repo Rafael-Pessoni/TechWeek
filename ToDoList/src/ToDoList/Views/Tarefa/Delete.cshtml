@@ -1,0 +1,33 @@
+﻿@model ToDoList.Model.Tarefa
+
+<h2>Deletar</h2>
+
+<h3>Você tem certeza de que deseja deletar esse registro?</h3>
+
+<div>
+    <h4>Tarefa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(x => x.Id)</dt>
+        <dd>@Html.DisplayFor(x => x.Id)</dd>
+
+        <dt>@Html.DisplayNameFor(x => x.Descricao)</dt>
+        <dd>@Html.DisplayFor(x => x.Descricao)</dd>
+
+        <dt>@Html.DisplayNameFor(x => x.DataTerminoPlanejado)</dt>
+        <dd>@Html.DisplayFor(x => x.DataTerminoPlanejado)</dd>
+
+        <dt>@Html.DisplayNameFor(x => x.DataTerminoEfetivo)</dt>
+        <dd>@Html.DisplayFor(x => x.DataTerminoEfetivo)</dd>
+
+        <dt>@Html.DisplayNameFor(x => x.DataCadastro)</dt>
+        <dd>@Html.DisplayFor(x => x.DataCadastro)</dd>
+    </dl>
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="hidden" asp-for="Id"/>
+            <input type="submit" value="Deletar" class="btn btn-default"/> |
+            <a asp-action="Index">Voltar</a>
+        </div>
+    </form>
+</div>

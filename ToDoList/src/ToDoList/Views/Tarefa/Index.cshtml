@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ToDoList.Model.Tarefa>
+
+<h2>Tarefas</h2>
+
+<p><a asp-action="Create">Adicionar Nova</a></p>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>@Html.DisplayNameFor(x => x.Id)</th>
+        <th>@Html.DisplayNameFor(x => x.Descricao)</th>
+        <th>@Html.DisplayNameFor(x => x.DataCadastro)</th>
+        <th>@Html.DisplayNameFor(x => x.DataTerminoPlanejado)</th>
+        <th>@Html.DisplayNameFor(x => x.DataTerminoEfetivo)</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(x => item.Id)</td>
+                <td>@Html.DisplayFor(x => item.Descricao)</td>
+                <td>@Html.DisplayFor(x => item.DataCadastro)</td>
+                <td>@Html.DisplayFor(x => item.DataTerminoPlanejado)</td>
+                <td>
+                    @if (item.DataTerminoEfetivo.HasValue)
+                    {
+                        @Html.DisplayFor(x => item.DataTerminoEfetivo)
+                    }
+                    else
+                    {
+                        <form asp-action="Finish" asp-route-id="@item.Id">
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Finalizar" class="btn btn-default" />
+                            </div>
+                        </form>
+                    }
+                </td>      
+                <td>
+                    @if (!item.DataTerminoEfetivo.HasValue)
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id">Editar</a><span> | </span>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a><span> | </span>
+                    }
+                    <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                </td>  
+            </tr>
+        }
+    </tbody>
+</table>
