@@ -26,5 +26,13 @@ namespace ToDoList.Model
         public DateTime? DataTerminoEfetivo { get; set; }
 
         public virtual ICollection<Interessado> Interessados { get; set; }
+
+        public void AddInteressado(Interessado interessado)
+        {
+            if(Interessados == null)
+                Interessados = new List<Interessado>();
+
+            Interessados.Add(interessado);
+        }
     }
 }

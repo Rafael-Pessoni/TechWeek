@@ -27,7 +27,13 @@
                 <span asp-validation-for="DataTerminoPlanejado"></span>
             </div>
         </div>
-        
+        <div>
+            @foreach (var item in Model.Interessados)
+            {
+                <hr />
+                @Html.Partial("Interessado", item)
+            }
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Salvar" class="btn btn-default"/>

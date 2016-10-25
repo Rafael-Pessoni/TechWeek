@@ -25,7 +25,7 @@ namespace ToDoList.Controllers
             if (id == null)
                 return NotFound();
 
-            var tarefa = _context.Tarefas.SingleOrDefault(x => x.Id == id);
+            var tarefa = _context.Tarefas.Include(x => x.Interessados).SingleOrDefault(x => x.Id == id);
 
             if (tarefa == null)
                 return NotFound();
@@ -39,9 +39,11 @@ namespace ToDoList.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Tarefa tarefa)
+        public IActionResult Create(Tarefa tarefa, Interessado interessado)
         {
             tarefa.DataCadastro = DateTime.Now;
+
+            tarefa.AddInteressado(interessado);
 
             if (!ModelState.IsValid)
                 return View(tarefa);
@@ -57,7 +59,7 @@ namespace ToDoList.Controllers
             if(id == null)
                 return NotFound();
 
-            var tarefa = _context.Tarefas.SingleOrDefault(x => x.Id == id);
+            var tarefa = _context.Tarefas.Include(x => x.Interessados).SingleOrDefault(x => x.Id == id);
 
             if(tarefa == null)
                 return NotFound();

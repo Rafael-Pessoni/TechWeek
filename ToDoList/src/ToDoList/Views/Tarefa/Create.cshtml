@@ -23,7 +23,10 @@
                 <span asp-validation-for="DataTerminoPlanejado"></span>
             </div>
         </div>
-
+        <hr/>
+        <div id="div-interessados">
+            @Html.Partial("Interessado")
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Salvar" class="btn btn-default" />
