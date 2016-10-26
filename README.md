@@ -2,7 +2,7 @@
 ##Demo apresentada na 8º TechWeek FATEC
 
 - Documentação do Asp.Net Core: https://docs.asp.net/en/latest/
-- Documentação do EntityFramework: https://docs.efproject.net/en/latest/platforms/aspnetcore/new-db.html
+- Documentação do EntityFramework: https://docs.efproject.net/en/latest/
 
 ======
 
