@@ -40,8 +40,8 @@
                 <td>
                     @if (!item.DataTerminoEfetivo.HasValue)
                     {
-                        <a class="btn" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                        <a class="btn" asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
+                        <a class="btn" asp-action="Edit" asp-route-id="@item.Id">Editar</a><span> | </span>
+                        <a class="btn" asp-action="Delete" asp-route-id="@item.Id">Deletar</a><span> | </span>
                     }
                     <a class="btn" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
                 </td>  
