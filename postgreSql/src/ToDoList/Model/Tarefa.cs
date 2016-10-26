@@ -25,10 +25,12 @@ namespace ToDoList.Model
         [Display(Name = "E-mail")]
         public string Email { get; set; }
 
+        [DataType(DataType.DateTime)]
         [Required(ErrorMessage = "O campo {0} é obrigatório", AllowEmptyStrings = false)]
         [Display(Name = "Termino Planejado")]
         public DateTime DataTerminoPlanejado { get; set; }
 
+        [DataType(DataType.DateTime)]
         [Display(Name = "Termino Efetivo")]
         public DateTime? DataTerminoEfetivo { get; set; }
     }
