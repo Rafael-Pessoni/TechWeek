@@ -89,6 +89,10 @@
   ```
   CONSOLE> dotnet restore
   ```
+  
+  ```
+  CONSOLE> dotnet build
+  ```
 
   ```
   CONSOLE> dotnet run
